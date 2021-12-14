@@ -30,7 +30,7 @@ long double calculate_numerator(long double x, long long counter){
     result*=sign;
     return result;
 }
-long double sequentialCode(long double x, long double acc){
+long double sequential_code(long double x, long double acc){
     long double value = 0;
     for (long double i = 0; i < acc; i++) {
         value += (calculate_numerator(x,i) / factorial(2*i));
@@ -45,7 +45,6 @@ long double parallel_code(long double x, int acc, int rank, int num_processes){
     return value;
 }
 int main(int argc, char** argv){
-    // long double res = sequentialCode(x, acc);
     long double acc;
     int num_processes;
     int rank;
@@ -82,7 +81,7 @@ int main(int argc, char** argv){
     {
         printf("Parallel runtime is %f seconds\n", global);
         time1 = MPI_Wtime();
-        long double seqResult = sequentialCode(x, acc);
+        long double seqResult = sequential_code(x, acc);
         time2 = MPI_Wtime();
         duration = time2-time1;
         printf("Sequential runtime is %f seconds\n", duration);
