@@ -30,19 +30,6 @@ long double calculate_numerator(long double x, long long counter){
     result*=sign;
     return result;
 }
-long double sequential_code(long double x, long double acc){
-    long double sign = -1;
-    long double num =  x * x;
-    long double den = 2;
-    long double value = 1;
-    for (long double i = 1; i <= acc; i+=1.0) {
-        value += (sign * num) / den;
-        num *=  (x * x);
-        den *= (2.0 * i + 1) * (2.0 * i + 2);
-        sign *= -1;
-    }
-    return value;
-}
 long double sequentialCode(long double x, long double acc){
     long double value = 0;
     for (long double i = 0; i < acc; i++) {
